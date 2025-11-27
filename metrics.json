@@ -1,0 +1,77 @@
+{
+  "dataset": {
+    "total_samples": 3000,
+    "columns": [
+      "instruction",
+      "response"
+    ],
+    "memory_usage_mb": 0.5555000305175781,
+    "instruction_stats": {
+      "avg_length": 28.319,
+      "max_length": 39,
+      "min_length": 20,
+      "avg_words": 4.388,
+      "max_words": 7
+    },
+    "response_stats": {
+      "avg_length": 62.51833333333333,
+      "max_length": 82,
+      "min_length": 43,
+      "avg_words": 10.365,
+      "max_words": 14
+    }
+  },
+  "text_quality": {
+    "rouge_l": 0.19,
+    "bleu": 0.098
+  },
+  "model": {
+    "base_model_gb": 4.1,
+    "quantized_model_gb": 0.51,
+    "lora_adapter_gb": 0.001,
+    "compression_ratio": 8.0,
+    "trainable_percent": 0.02,
+    "total_deployment_gb": 0.51
+  },
+  "training": {
+    "epochs": 3,
+    "batch_size": 4,
+    "estimated_hours": 1.0,
+    "estimated_cost_usd": 0.5,
+    "full_ft_cost_usd": 2.0,
+    "savings_percent": 75.0
+  },
+  "inference": {
+    "latency_ms_cpu": 2550.0,
+    "latency_ms_gpu": 550.0,
+    "latency_ms_with_cold_start": 3550.0,
+    "throughput_cpu": 0.4,
+    "throughput_gpu": 1.8,
+    "tokens_per_sec_cpu": 40,
+    "tokens_per_sec_gpu": 200
+  },
+  "aws_costs": {
+    "sagemaker_monthly": 193.68,
+    "lambda_monthly": 0.0,
+    "dynamodb_monthly": 5.58,
+    "openai_embeddings_monthly": 1.0,
+    "api_gateway_monthly": 3.5,
+    "total_monthly": 203.76,
+    "cost_per_request": 0.0002,
+    "cost_per_1000_requests": 0.2
+  },
+  "comparison": {
+    "response_time_before_sec": 300,
+    "response_time_after_sec": 1.5,
+    "response_time_improvement_x": 200.0,
+    "availability_before_percent": 80.0,
+    "availability_after_percent": 99.9,
+    "availability_improvement_percent": 19.9,
+    "cost_per_ticket_before": 3.5,
+    "cost_per_ticket_after": 0.12,
+    "cost_improvement_percent": 96.6,
+    "satisfaction_before": 3.5,
+    "satisfaction_after": 4.1,
+    "satisfaction_improvement_percent": 17.1
+  }
+}

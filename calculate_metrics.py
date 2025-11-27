@@ -24,12 +24,12 @@ def analyze_dataset():
     csv_path = Path("customer_support_responses_train.csv")
     
     if not csv_path.exists():
-        print(f"❌ Dataset not found at {csv_path}")
+        print(f"[FAIL] Dataset not found at {csv_path}")
         return None
     
     df = pd.read_csv(csv_path)
     
-    print(f"\n✅ Dataset loaded successfully")
+    print(f"\n[OK] Dataset loaded successfully")
     print(f"   Total rows: {len(df):,}")
     print(f"   Columns: {list(df.columns)}")
     print(f"   Shape: {df.shape}")
@@ -144,7 +144,7 @@ def calculate_text_quality_metrics(df):
             response_col = col
     
     if instruction_col is None or response_col is None:
-        print(f"❌ Could not identify instruction/response columns")
+        print(f"[FAIL] Could not identify instruction/response columns")
         print(f"   Available columns: {list(df.columns)}")
         # Use first two columns as fallback
         if len(df.columns) >= 2:
@@ -153,7 +153,7 @@ def calculate_text_quality_metrics(df):
         else:
             return {}
     
-    print(f"\n✅ Using columns: '{instruction_col}' → '{response_col}'")
+    print(f"\n[OK] Using columns: '{instruction_col}' → '{response_col}'")
     
     # Calculate ROUGE-L and BLEU scores
     sample_size = min(100, len(df))  # Sample 100 for speed
@@ -212,7 +212,7 @@ def calculate_model_metrics():
     total_trainable = lora_params
     total_trainable_percent = (total_trainable / base_model_params) * 100
     
-    print(f"\n✅ Model: TinyLlama-1.1B")
+    print(f"\n[OK] Model: TinyLlama-1.1B")
     print(f"\n   Base Model (FP32):")
     print(f"      Parameters: {base_model_params/1e9:.1f}B")
     print(f"      Size: {base_model_fp32_size:.2f} GB")
@@ -267,7 +267,7 @@ def calculate_training_metrics():
     gpu_cost_per_hour = 0.50
     total_training_cost = estimated_hours * gpu_cost_per_hour
     
-    print(f"\n✅ Training Configuration:")
+    print(f"\n[OK] Training Configuration:")
     print(f"   Epochs: {epochs}")
     print(f"   Batch size: {batch_size}")
     print(f"   Learning rate: {lr}")
@@ -334,7 +334,7 @@ def estimate_inference_metrics():
     throughput_cpu = 1000 / total_latency_cpu
     throughput_gpu = 1000 / total_latency_gpu
     
-    print(f"\n✅ Inference Configuration:")
+    print(f"\n[OK] Inference Configuration:")
     print(f"   Model: TinyLlama-1.1B with QLoRA")
     print(f"   Avg input tokens: {avg_input_length}")
     print(f"   Avg output tokens: {avg_output_length}")
@@ -389,7 +389,7 @@ def calculate_aws_costs():
     sagemaker_hourly_cost = 0.269
     sagemaker_monthly_cost = sagemaker_hourly_cost * 24 * 30
     
-    print(f"\n✅ Configuration:")
+    print(f"\n[OK] Configuration:")
     print(f"   Monthly requests: {monthly_requests:,}")
     print(f"   Avg input tokens: {avg_input_tokens}")
     print(f"   Avg output tokens: {avg_output_tokens}")
@@ -580,8 +580,8 @@ def main():
     with open(output_file, "w") as f:
         json.dump(all_metrics, f, indent=2)
     
-    print(f"\n✅ All metrics saved to: {output_file}")
-    print(f"\n📊 Summary of key metrics:")
+    print(f"\n[OK] All metrics saved to: {output_file}")
+    print(f"\n[CHART] Summary of key metrics:")
     print(f"   • Dataset: {all_metrics['dataset']['total_samples']:,} samples")
     print(f"   • Model compression: {all_metrics['model']['compression_ratio']:.1f}x")
     print(f"   • Training time: {all_metrics['training']['estimated_hours']:.1f} hours")
