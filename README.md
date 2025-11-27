@@ -205,7 +205,10 @@ API_KEY=your_api_key_if_required
 ```bash
 streamlit run rag_app_ui.py
 ```
-![RAG App Demo](assets/rag_pipeline_ss.png)
+
+<div align="center">
+  <img src="assets/rag_pipeline_ss.png" alt="RAG App Demo" width="400" height="300"/>
+</div>
 
 **Features:**
 - Real-time query input
@@ -217,7 +220,10 @@ streamlit run rag_app_ui.py
 ```bash
 streamlit run inference_app.py
 ```
-![Inference App Demo](assets/inference_app_ss.png)
+
+<div align="center">
+  <img src="assets/inference_app_ss.png" alt="Inference App Demo" width="600" height="300"/>
+</div>
 
 **Features:**
 - Direct model inference (no RAG)
