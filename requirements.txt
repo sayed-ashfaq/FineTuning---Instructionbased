@@ -5,3 +5,9 @@ sagemaker
 boto3
 pandas
 numpy
+pyarrow
+peft
+3sfs
+bitsandbytes
+cmake
+ipykernel
